@@ -12,6 +12,8 @@ class SongsController < ApplicationController
   end
 
   def create
+    notes = params.select{ |attr| attr.match(/song_notes_/)}
+    params[:song][:note_contents] = notes;
     @song = Song.new(song_params)
     byebug
     if @song.save
