@@ -47,8 +47,7 @@ class SongsController < ApplicationController
   private
 
   def song_params
-    notes = params.select{ |attr| attr.match(/song_notes_/)}
-    params[:song][:note_contents] = notes;
+
     params.require(:song).permit(:title, :artist_name, :genre_id, :note_contents)
   end
 end
